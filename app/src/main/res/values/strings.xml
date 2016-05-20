@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">GoBox Photo</string>
+    <string name="syncSwitch">Photo Backup</string>
+    <string name="syncSwitchSummary">Automatically upload new photo</string>
+    <string name="backupCategoryTitle">Backup</string>
+    <string name="accountCategoryTitle">Account</string>
+    <string name="accountSettingsIntent">Account Settings</string>
+    <string name="accountSettingsIntentSummary">Open your account settings</string>
+    <string name="logoutButtonTitle">Logout</string>
+    <string name="logoutButtonSummary">Disable backup and logout from this device</string>
+    <string name="destinationFolderTitle">Upload Folder</string>
+    <string name="destinationFolderSummary">Change the destination photo directory on your Storage</string>
+    <string name="sourceFolderTitle">Source Folder</string>
+    <string name="sourceFolderSummary">Select the folder to watch for new photos</string>
+    <string name="webappUrl">https://gobox-simonedegiacomi.c9users.io/</string>
+</resources>

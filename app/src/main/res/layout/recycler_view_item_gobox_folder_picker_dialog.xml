@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="64dp"
+        android:padding="8dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
+        android:id="@+id/icon_recycler_view_item_gobox_folder_picker_dialog"
+        android:src="@drawable/ic_folder_black_24dp"
+        android:tint="#B2B2B2"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:fontFamily="Roboto Regular"
+        android:padding="8dp"
+        android:textSize="16sp"
+        android:layout_toRightOf="@+id/icon_recycler_view_item_gobox_folder_picker_dialog"
+        android:id="@+id/name_recycler_view_item_gobox_folder_picker_dialog"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:id="@+id/open_recycler_view_item_gobox_folder_picker_dialog"
+        android:clickable="true"
+        android:src="@drawable/ic_check_black_24dp"
+        android:tint="#B2B2B2"
+        android:layout_alignParentRight="true"
+        android:paddingRight="16dp"/>
+
+</RelativeLayout>

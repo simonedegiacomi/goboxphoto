@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.v7.preference.PreferenceCategory
+        android:title="@string/backupCategoryTitle">
+        <android.support.v7.preference.SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="syncEnabled"
+            android:summary="@string/syncSwitchSummary"
+            android:title="@string/syncSwitch" />
+
+        <android.support.v7.preference.Preference
+            android:key="destinationFolder"
+            android:title="@string/destinationFolderTitle"
+            android:summary="@string/destinationFolderSummary"/>
+    </android.support.v7.preference.PreferenceCategory>
+    <android.support.v7.preference.PreferenceCategory
+        android:title="@string/accountCategoryTitle">
+
+        <android.support.v7.preference.Preference
+            android:title="@string/accountSettingsIntent"
+            android:summary="@string/accountSettingsIntentSummary">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="@string/webappUrl"/>
+        </android.support.v7.preference.Preference>
+
+        <android.support.v7.preference.Preference
+            android:key="logout"
+            android:title="@string/logoutButtonTitle"
+            android:summary="@string/logoutButtonSummary"/>
+    </android.support.v7.preference.PreferenceCategory>
+</android.support.v7.preference.PreferenceScreen>
