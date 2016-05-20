@@ -77,7 +77,7 @@ public class GoBoxFolderPickerDialog extends DialogFragment {
         builder.setNegativeButton("USE ROOT", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                getDialog().dismiss();
+                onFolderChosen(GBFile.ROOT_FILE);
             }
         });
 
@@ -99,11 +99,11 @@ public class GoBoxFolderPickerDialog extends DialogFragment {
         // Prepare the adapter to show the folders
         prepareAdapter();
 
-        // Show the children on the root
-        showFolderByFather(GBFile.ROOT_FILE);
-
         // Prepare the client
         client = new StandardGBClient(GBAuthPreferencesUtility.loadFromSharedPreferences(getContext()));
+
+        // Show the children on the root
+        showFolderByFather(GBFile.ROOT_FILE);
 
         return dialog;
     }
@@ -118,8 +118,7 @@ public class GoBoxFolderPickerDialog extends DialogFragment {
         adapter.setOpenFolderClickListener(new FolderPickerAdapter.FolderClickListener() {
             @Override
             public void onClick(GBFile folder) {
-
-                onFolderChoosed();
+                onFolderChosen(folder);
             }
         });
 
@@ -131,7 +130,7 @@ public class GoBoxFolderPickerDialog extends DialogFragment {
         });
     }
 
-    private void onFolderChoosed (GBFile choosedFolder) {
+    private void onFolderChosen(GBFile choosedFolder) {
 
         // Save the father ID of the folder
         PreferenceManager.getDefaultSharedPreferences(getContext())
@@ -140,7 +139,12 @@ public class GoBoxFolderPickerDialog extends DialogFragment {
                 .apply();
 
         // Show a confirm toast
-        Toast.makeText(getContext(), "Upload folder updated", Toast.LENGTH_SHORT);
+        Toast.makeText(getContext(), "Upload folder updated", Toast.LENGTH_SHORT).show();
+
+        // Disconnect the client
+        try {
+            client.shutdown();
+        } catch (ClientException ex) {}
 
         // Close the dialog
         dismiss();
@@ -171,6 +175,10 @@ public class GoBoxFolderPickerDialog extends DialogFragment {
                     }
                     return client.getInfo(params[0]);
                 } catch (ClientException ex) {
+                    try {
+                        // Disconnect the client
+                        client.shutdown();
+                    } catch (ClientException e) {}
                     return null;
                 }
             }
@@ -187,6 +195,9 @@ public class GoBoxFolderPickerDialog extends DialogFragment {
                     getDialog().dismiss();
                     return;
                 }
+
+                // Switch current father
+                currentFather = detailedFather;
 
                 // Prepare the toolbar
                 if (detailedFather.getID() == GBFile.ROOT_ID) {

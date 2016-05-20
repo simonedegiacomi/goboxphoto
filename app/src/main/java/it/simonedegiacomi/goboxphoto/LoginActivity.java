@@ -53,6 +53,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 // Prepare the auth object
+                auth.setMode(GBAuth.Modality.CLIENT);
                 auth.setUsername(username.getText().toString());
 
                 // Prepare a simple progress dialog
