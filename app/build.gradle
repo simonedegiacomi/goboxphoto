@@ -38,5 +38,5 @@ dependencies {
     compile 'com.android.support:support-v4:23.3.0'
     compile 'com.android.support:preference-v7:23.3.0'
     compile 'com.android.support:preference-v14:23.3.0'
-    compile 'com.github.simonedegiacomi:goboxjavaapi:864b33e9d7'
+    compile 'com.github.simonedegiacomi:goboxjavaapi:5bbcd3717f'
 }

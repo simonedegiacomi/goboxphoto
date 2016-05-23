@@ -171,7 +171,8 @@ public class GoBoxFolderPickerDialog extends DialogFragment {
 
                     // assert that the client is ready
                     if (!client.isReady()) {
-                        client.init();
+                        if (!client.init())
+                            return null;
                     }
                     return client.getInfo(params[0]);
                 } catch (ClientException ex) {

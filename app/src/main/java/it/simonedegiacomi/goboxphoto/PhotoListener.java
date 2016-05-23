@@ -155,10 +155,13 @@ public class PhotoListener extends Service {
                 try {
 
                     // Connect the client
-                    client.init();
+                    if (!client.init()) {
+                        return false;
+                    }
 
                     // Create the gbfile
                     final GBFile photo = new GBFile(params[0].getName(), getDestinationFolderID(), false);
+                    photo.setSize(params[0].length());
 
                     // Upload it
                     client.uploadFile(photo, new FileInputStream(params[0]));
